@@ -34,7 +34,7 @@ import javax.ws.rs.core.MediaType;
 				}
 		)
 		,tags = {
-				@Tag(name="order", description = "orders api")
+				@Tag(name="orders", description = "orders api")
 		}
 )
 public class OrderApplication extends Application{
