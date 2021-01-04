@@ -1,0 +1,14 @@
+plugins {
+	id 'java-library'
+    // Create Jandex file for Quarkus CDI
+    id "org.kordamp.gradle.jandex"
+}
+
+dependencies {
+    // Allow use of Quarkus extensions
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    api 'io.quarkus:quarkus-hibernate-orm-panache'
+    implementation 'io.quarkus:quarkus-jdbc-postgresql'
+    testImplementation 'io.quarkus:quarkus-junit5'
+}
+
