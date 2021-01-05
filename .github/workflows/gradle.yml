@@ -10,7 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -35,12 +34,23 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
+  docker:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
     - name: Build docker images and publish
       run: echo "Need organisation docker hub infos (https://github.com/marketplace/actions/build-and-push-docker-images)"
 
+  deploy:
+    needs: [docker]
+    runs-on: ubuntu-latest
+    steps:
     - name: Deploy to env
       run: echo "Need organisation environment and kubernetes (multiple non Github action available)"
 
+  sonar:
+    runs-on: ubuntu-latest
+    steps:
     - name: SonarCloud Scan
       run: | 
         echo "Need organisation info to set up and run Sonar Cloud (SonarSource/sonarcloud-github-action@v1.4)"
