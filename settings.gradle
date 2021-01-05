@@ -11,6 +11,6 @@ pluginManagement {
 
 rootProject.name = 'poc-dktedit'
 
-include 'api'
-include 'db'
-include 'utils'
+include 'poc-dktedit-api'
+include 'poc-dktedit-db'
+include 'poc-dktedit-utils'
