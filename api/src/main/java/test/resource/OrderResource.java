@@ -48,7 +48,7 @@ public class OrderResource {
         if (status != null && !status.isBlank()) {
             try {
                 OrderStatus orderStatus = OrderStatus.valueOf(status);
-                LogUtils.logSomething("Listing all orders with status = " +orderStatus);
+                LogUtils.logSomething("Listing all orders with status : " +orderStatus);
                 list = orderRepository.list("status", orderStatus);
             } catch (IllegalArgumentException e) {
                 throw new OrderApiException(Status.BAD_REQUEST, status + " is not a valid status");
