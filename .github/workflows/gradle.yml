@@ -36,7 +36,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: coverageReports
-        path: "**/reports/jacoco/test/jacocoTestReport.xml"
+        path: "*/build/reports/jacoco/test/jacocoTestReport.xml"
         if-no-files-found: error
         retention-days: 1
 
@@ -60,7 +60,7 @@ jobs:
         name: apiDockerBuildResources
     - name: Build docker images and publish
       run: |
-        ls -a **
+        ls -lR
         echo "Need organisation docker hub infos (https://github.com/marketplace/actions/build-and-push-docker-images)"
 
   deploy:
@@ -83,7 +83,7 @@ jobs:
         name: coverageReports
 
     - name: Check coverage reports
-      run: ls -l **/reports/jacoco/test/jacocoTestReport.xml
+      run: ls -l */build/reports/jacoco/test/jacocoTestReport.xml
 
 #    - name: SonarCloud Scan
 #      uses: sonarsource/sonarcloud-github-action@v1.4
@@ -94,7 +94,7 @@ jobs:
 #        args: >
 #          -Dsonar.organization=my-organization
 #          -Dsonar.projectKey=my-projectkey
-#          -Dsonar.coverage.jacoco.xmlReportPaths="**/reports/jacoco/test/jacocoTestReport.xml"
+#          -Dsonar.coverage.jacoco.xmlReportPaths="*/build/reports/jacoco/test/jacocoTestReport.xml"
 #          -Dsonar.sources=....list sources via gradle
 #          -Dsonar.tests=tests/
 #          -Dsonar.verbose=true
